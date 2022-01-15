@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue2项目高频第三方库的引入 | 三天的博客</title>
+    <meta name="description" content="ThreeDay Personal Website">
+    <link rel="stylesheet" href="/assets/style.49eed234.css">
+    <link rel="modulepreload" href="/assets/Home.00427d51.js">
+    <link rel="modulepreload" href="/assets/app.672c393a.js">
+    <link rel="modulepreload" href="/assets/font_end_engineering_vue2ProduceConfig.md.e96cc261.lean.js">
+    
+    <meta name="twitter:title" content="vue2项目高频第三方库的引入 | 三天的博客">
+  <meta property="og:title" content="vue2项目高频第三方库的引入 | 三天的博客">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/" aria-label="三天的博客, back to home" data-v-675d8756 data-v-cc01ef16><!----> 三天的博客</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><nav class="nav-links" data-v-675d8756 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/font_end_knowledge_system/html" data-v-b8818f8c>前端知识体系 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/font_end_engineering/application" data-v-b8818f8c>前端工程化 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/accumulate/data_struct" data-v-b8818f8c>算法 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/others/git_hooks" data-v-b8818f8c>杂项 <!----></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><nav class="nav-links nav" data-v-83e92a68 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/font_end_knowledge_system/html" data-v-b8818f8c>前端知识体系 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/font_end_engineering/application" data-v-b8818f8c>前端工程化 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/accumulate/data_struct" data-v-b8818f8c>算法 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/others/git_hooks" data-v-b8818f8c>杂项 <!----></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><ul class="sidebar-links" data-v-83e92a68><!--[--><li class="sidebar-link"><p class="sidebar-link-item">开发相关依赖</p><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/font_end_engineering/application">开发所需的软件及使用方式</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/font_end_engineering/vue2ProduceConfig">vue2项目高频第三方库的引入</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/font_end_engineering/commonCodeSnippets">常用代码片段</a><!----></li></ul></li><!--]--></ul><!--[--><!--]--></aside><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h1 id="vue2项目高频第三方库的引入" tabindex="-1">vue2项目高频第三方库的引入 <a class="header-anchor" href="#vue2项目高频第三方库的引入" aria-hidden="true">#</a></h1><h2 id="引入axios" tabindex="-1">引入axios <a class="header-anchor" href="#引入axios" aria-hidden="true">#</a></h2><p>最好同时使用vueAxios，这样就可以直接在全局的任意一个地方直接使用下面的用法， 而不用在每个使用的地方import axios或者将axios挂载到vue的原型链上</p><div class="language-javascript"><pre><code><span class="token keyword">this</span><span class="token punctuation">.</span>axios<span class="token punctuation">.</span><span class="token constant">XXX</span>
+</code></pre></div><ol><li>安装</li></ol><div class="language-"><pre><code>npm i axios vue-axios --save
+</code></pre></div><ol start="2"><li>引入 在main.js中</li></ol><div class="language-javascript"><pre><code><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">&#39;axios&#39;</span>
+<span class="token keyword">import</span> vueAxios <span class="token keyword">from</span> <span class="token string">&#39;vue-axios&#39;</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>vueAxios<span class="token punctuation">,</span> axios<span class="token punctuation">)</span>
+</code></pre></div><ol start="3"><li>常见用法</li></ol><div class="language-javascript"><pre><code><span class="token comment">// 根据环境变量设置不同的请求地址</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>baseURL <span class="token operator">=</span> <span class="token constant">BASE_URL</span>
+<span class="token comment">// 设置请求超时时间</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>timeout <span class="token operator">=</span> <span class="token constant">TIMEOUT</span>
+
+请求拦截
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 在发送请求之前做些什么</span>
+  <span class="token keyword">return</span> config
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 对请求错误做些什么</span>
+  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 响应拦截</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 对响应做点什么</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 对响应错误做点什么</span>
+  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="引入mock" tabindex="-1">引入mock <a class="header-anchor" href="#引入mock" aria-hidden="true">#</a></h2><ol><li>安装</li></ol><div class="language-"><pre><code>npm i mockjs --save-dev
+</code></pre></div><ol start="2"><li>引入 在main.js中</li></ol><div class="language-javascript"><pre><code><span class="token comment">// mock开关</span>
+<span class="token keyword">const</span> <span class="token constant">USE_MOCK</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">USE_MOCK</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#39;../public/mock/api&#39;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>mock数据样例 ，具体<a href="http://mockjs.com/examples.html" target="_blank" rel="noopener noreferrer">mock数据的语法参考</a></p><div class="language-javascript"><pre><code><span class="token comment">//数据占位符使用</span>
+<span class="token punctuation">{</span>
+  <span class="token string-property property">&quot;integer&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@integer(10, 30)&quot;</span><span class="token punctuation">,</span>  <span class="token comment">//随机生成一个10～30之间的正整数</span>
+  <span class="token string-property property">&quot;float&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@float(60, 100, 2, 2)&quot;</span><span class="token punctuation">,</span>  <span class="token comment">//随机生成浮点数，参数分别为整数部分最小值和最大值、小数部分保留最小位数和最大位数</span>
+  <span class="token string-property property">&quot;boolean&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@boolean&quot;</span><span class="token punctuation">,</span>       <span class="token comment">//随机生成boolean</span>
+  <span class="token string-property property">&quot;string|1-2&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@string&quot;</span><span class="token punctuation">,</span>     <span class="token comment">//随机生成字符串</span>
+  <span class="token string-property property">&quot;name&quot;</span><span class="token operator">:</span><span class="token string">&quot;@cname&quot;</span><span class="token punctuation">,</span>             <span class="token comment">//随机生成名字</span>
+ 
+  <span class="token string-property property">&quot;date&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@date(yyyy-MM-dd)&quot;</span><span class="token punctuation">,</span> <span class="token comment">//按照格式随机生成时间</span>
+  <span class="token string-property property">&quot;datetime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@datetime&quot;</span><span class="token punctuation">,</span>     <span class="token comment">//随机生成时间</span>
+  <span class="token string-property property">&quot;now&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@now&quot;</span><span class="token punctuation">,</span>               <span class="token comment">//当前时间</span>
+ 
+  <span class="token string-property property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@id&quot;</span><span class="token punctuation">,</span>                 <span class="token comment">//随机生成一个 18 位身份证</span>
+  <span class="token string-property property">&quot;guid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@guid&quot;</span><span class="token punctuation">,</span>             <span class="token comment">//随机生成一个 GUID</span>
+  <span class="token string-property property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@url&quot;</span><span class="token punctuation">,</span>               <span class="token comment">//随机生成url字符串</span>
+  <span class="token string-property property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@email&quot;</span><span class="token punctuation">,</span>           <span class="token comment">//随机生成邮箱</span>
+  <span class="token string-property property">&quot;image&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@image(200x200)&quot;</span><span class="token punctuation">,</span>  <span class="token comment">//随机生成一个大小为200x200的图片链接</span>
+  <span class="token string-property property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@title&quot;</span><span class="token punctuation">,</span>           <span class="token comment">//随机生成一句标题，其中每个单词的首字母大写</span>
+  <span class="token string-property property">&quot;upper&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@upper(@title)&quot;</span><span class="token punctuation">,</span>   <span class="token comment">//把生随机成的标题全部转为大写</span>
+  <span class="token string-property property">&quot;cparagraph&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@cparagraph&quot;</span><span class="token punctuation">,</span> <span class="token comment">//随机生成一段中文文本</span>
+  <span class="token string-property property">&quot;csentence&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@csentence&quot;</span><span class="token punctuation">,</span>   <span class="token comment">//随机生成一段中文文本</span>
+  <span class="token string-property property">&quot;range&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@range(2, 10)&quot;</span> <span class="token punctuation">,</span>   <span class="token comment">//返回一个内容从2开始到9的整型数组</span>
+ 
+  <span class="token string-property property">&quot;region&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@region&quot;</span><span class="token punctuation">,</span>         <span class="token comment">//随机生成地区 华中</span>
+  <span class="token string-property property">&quot;province&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@province&quot;</span><span class="token punctuation">,</span>     <span class="token comment">//随机生成省会 省</span>
+  <span class="token string-property property">&quot;city&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@city&quot;</span><span class="token punctuation">,</span>             <span class="token comment">//随机生成城市 市</span>
+  <span class="token string-property property">&quot;county&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@county&quot;</span><span class="token punctuation">,</span>         <span class="token comment">//随机生成一个（中国）县</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-javascript"><pre><code><span class="token keyword">import</span> <span class="token constant">MOCK</span> <span class="token keyword">from</span> <span class="token string">&#39;mockjs&#39;</span>
+
+<span class="token constant">MOCK</span><span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token string">&#39;/api/user/login&#39;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">&#39;status&#39;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&#39;data&#39;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">&#39;id|1-100&#39;</span><span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&#39;username&#39;</span><span class="token operator">:</span> <span class="token string">&#39;@cname&#39;</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&#39;email&#39;</span><span class="token operator">:</span> <span class="token string">&#39;admin@123.com&#39;</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&#39;phone&#39;</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&#39;role&#39;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&#39;createTime&#39;</span><span class="token operator">:</span> <span class="token number">1613015825256</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&#39;updateTime&#39;</span><span class="token operator">:</span> <span class="token number">1613015828256</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="引入iconfont" tabindex="-1">引入iconfont <a class="header-anchor" href="#引入iconfont" aria-hidden="true">#</a></h2><ol><li>安装</li></ol><p><a href="https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2" target="_blank" rel="noopener noreferrer">iconfont官网</a><img src="https://img-blog.csdnimg.cn/20191112134322653.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MDUyOTk1,size_16,color_FFFFFF,t_70" alt="image"><img src="https://img-blog.csdnimg.cn/20191112134358385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MDUyOTk1,size_16,color_FFFFFF,t_70" alt="image"><img src="https://img-blog.csdnimg.cn/20191112134648349.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MDUyOTk1,size_16,color_FFFFFF,t_70" alt="image"></p><ol start="2"><li>引入</li></ol><p>main.js中</p><div class="language-"><pre><code>import &#39;@/assets/icon/iconfont.css&#39; //你放对应文件的路径
+</code></pre></div><p>选择想要的矢量图的代码 <img src="https://img-blog.csdnimg.cn/20191112135034767.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MDUyOTk1,size_16,color_FFFFFF,t_70" alt="image"></p><p>在需要使用的页面中如下使用，class中粘贴矢量图代码,一定要加iconfont!!!</p><div class="language-html"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> <span class="token punctuation">&quot;</span>iconfont icontianmaoxingxiang2<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre></div><h2 id="引入normalize-css" tabindex="-1">引入normalize.css <a class="header-anchor" href="#引入normalize-css" aria-hidden="true">#</a></h2><ol><li>安装</li></ol><div class="language-"><pre><code>npm i normalize.css --save
+</code></pre></div><ol start="2"><li>引入</li></ol><p>main.js中</p><div class="language-"><pre><code>import &#39;normalize.css&#39; 
+</code></pre></div><ol start="3"><li>常见问题</li></ol><p>没有安装：css-loader   和style-loader</p><div class="language-"><pre><code>npm install css-loader style-loader
+</code></pre></div><h2 id="引入reset-css" tabindex="-1">引入reset.css <a class="header-anchor" href="#引入reset-css" aria-hidden="true">#</a></h2><ol><li><p>引入 <a href="./commonCodeSnippets.html#reset-css">文件地址</a></p></li><li><p>常见用法 app.vue里</p></li></ol><div class="language-css"><pre><code>&lt;style lang=<span class="token string">&quot;这里看你使用的是less还是sass&quot;</span>&gt;
+    <span class="token atrule"><span class="token rule">@import</span> <span class="token string">&#39;reset.css的路径&#39;</span><span class="token punctuation">;</span></span>
+&lt;/style&gt;
+</code></pre></div><h2 id="引入border-css" tabindex="-1">引入border.css <a class="header-anchor" href="#引入border-css" aria-hidden="true">#</a></h2><ol><li><p>引入 <a href="./commonCodeSnippets.html#border-css">文件地址</a></p></li><li><p>常见用法 app.vue里</p></li></ol><div class="language-css"><pre><code>&lt;style lang=<span class="token string">&quot;这里看你使用的是less还是sass&quot;</span>&gt;
+    <span class="token atrule"><span class="token rule">@import</span> <span class="token string">&#39;border.css的路径&#39;</span><span class="token punctuation">;</span></span>
+&lt;/style&gt;
+</code></pre></div><h2 id="引入图片懒加载插件-vue-lazy" tabindex="-1">引入图片懒加载插件(vue-lazy) <a class="header-anchor" href="#引入图片懒加载插件-vue-lazy" aria-hidden="true">#</a></h2><ol><li>引入</li></ol><div class="language-"><pre><code>npm i vue-lazyload --save-dev
+</code></pre></div><ol start="2"><li>常见用法 main.js里</li></ol><div class="language-javascript"><pre><code><span class="token keyword">import</span> VueLazyLoad <span class="token keyword">from</span> <span class="token string">&#39;vue-lazyload&#39;</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>VueLazyLoad<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">loading</span><span class="token operator">:</span> <span class="token string">&#39;&#39;</span> <span class="token comment">//loading图的路径</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>业务组件里</p><div class="language-html"><pre><code>// 把需要用到懒加载的图片，src属性换为v-lazy
+
+// 替换前
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item.imgSrc<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/static/demo.jpg<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+
+// 替换后
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">v-lazy</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item.imgSrc<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">v-lazy</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&#39;</span>/static/demo.jpg<span class="token punctuation">&#39;</span><span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="引入轮播图组件" tabindex="-1">引入轮播图组件 <a class="header-anchor" href="#引入轮播图组件" aria-hidden="true">#</a></h2><ol><li>安装</li></ol><p><a href="https://www.swiper.com.cn/api/navigation/355.html" target="_blank" rel="noopener noreferrer">swipper官网</a></p><div class="language-"><pre><code>npm install vue-awesome-swiper --save
+</code></pre></div><ol start="2"><li>引入</li></ol><div class="language-"><pre><code>import { swiper, swiperSlide } from &quot;vue-awesome-swiper&quot;;
+</code></pre></div><p>引入swiper样式(一定要引)</p><div class="language-javascript"><pre><code><span class="token keyword">import</span> <span class="token string">&#39;swiper/dist/css/swiper.css&#39;</span>
+</code></pre></div><p>样例代码</p><div class="language-html"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>slide<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> <span class="token punctuation">&quot;</span>iconfont  icontianmaoxingxiang2<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper</span> <span class="token attr-name">:options</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>swiperOption<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>swiper-container<span class="token punctuation">&quot;</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>mySwiper<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper-slide</span>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>swiper-item<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>(item,index) in imgArr<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>index<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item.image|detailImg<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper-slide</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>swiper-pagination<span class="token punctuation">&quot;</span></span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>pagination<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> swiper<span class="token punctuation">,</span> swiperSlide <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue-awesome-swiper&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">&#39;swiper/dist/css/swiper.css&#39;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;index&quot;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    swiper<span class="token punctuation">,</span>
+    swiperSlide
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">imgArr</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">swiperOption</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">pagination</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">&#39;.swiper-pagination&#39;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// 这样写小圆点就有了</span>
+        <span class="token literal-property property">autoplay</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">loop</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><ol start="3"><li>常见问题</li></ol><p>调整轮播图样式</p><div class="language-javascript"><pre><code>stylus的样式穿透 使用<span class="token operator">&gt;&gt;&gt;</span>
+外层 <span class="token operator">&gt;&gt;&gt;</span> 第三方组件
+样式
+<span class="token punctuation">.</span>wrapper <span class="token operator">&gt;&gt;&gt;</span> <span class="token punctuation">.</span>swiper<span class="token operator">-</span>pagination<span class="token operator">-</span>bullet<span class="token operator">-</span>active
+<span class="token literal-property property">background</span><span class="token operator">:</span> #fff
+
+
+
+
+sass和less的样式穿透 使用<span class="token operator">/</span>deep<span class="token operator">/</span>
+外层 <span class="token operator">/</span>deep<span class="token operator">/</span> 第三方组件 <span class="token punctuation">{</span>
+样式
+<span class="token punctuation">}</span>
+<span class="token punctuation">.</span>wrapper <span class="token operator">/</span>deep<span class="token operator">/</span> <span class="token punctuation">.</span>swiper<span class="token operator">-</span>pagination<span class="token operator">-</span>bullet<span class="token operator">-</span>active<span class="token punctuation">{</span>
+<span class="token literal-property property">background</span><span class="token operator">:</span> #fff<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>数据是动态加载的时候,滑块就不能循环滑动,滑动到最后一页时将不能继续向下滑动</p><div class="language-javascript"><pre><code><span class="token comment">//我们需要在swiper组件上设置一个 </span>
+v<span class="token operator">-</span><span class="token keyword">if</span> <span class="token operator">=</span> <span class="token string">&quot;swiperImg.length &gt; 0&quot;</span> 
+
+<span class="token comment">// 完整代码</span>
+<span class="token operator">&lt;</span>swiper v<span class="token operator">-</span><span class="token keyword">if</span> <span class="token operator">=</span> <span class="token string">&quot;swiperImg.length &gt; 0&quot;</span> <span class="token operator">:</span>options<span class="token operator">=</span><span class="token string">&quot;swiperOption&quot;</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;swiper-container&quot;</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>swiper<span class="token operator">-</span>slide v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">&quot;(item,index) in swiperImg&quot;</span> <span class="token operator">:</span>key <span class="token operator">=</span> <span class="token string">&quot;index&quot;</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;swiper-item&quot;</span> <span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>img <span class="token operator">:</span>src<span class="token operator">=</span><span class="token string">&quot;item.imgUrl&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>swiper<span class="token operator">-</span>slide<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;swiper-pagination&quot;</span> slot<span class="token operator">=</span><span class="token string">&quot;pagination&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>swiper<span class="token operator">&gt;</span>
+</code></pre></div></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"accumulate_readme.md\":\"78ce5bd8\",\"accumulate_data_struct.md\":\"f66f7d0c\",\"accumulate_high.md\":\"324d8391\",\"accumulate_time_or_space_analyse.md\":\"1786e666\",\"font_end_engineering_application.md\":\"78c3e347\",\"font_end_engineering_commoncodesnippets.md\":\"f6adbee7\",\"font_end_engineering_vue2produceconfig.md\":\"e96cc261\",\"font_end_knowledge_system_readme.md\":\"72235778\",\"font_end_knowledge_system_css.md\":\"41b88a35\",\"font_end_knowledge_system_html.md\":\"7baeeac5\",\"font_end_knowledge_system_js.md\":\"155456d2\",\"index.md\":\"1a5c2210\",\"others_git_hooks.md\":\"39a78403\"}")</script>
+    <script type="module" async src="/assets/app.672c393a.js"></script>
+    
+  </body>
+</html>
