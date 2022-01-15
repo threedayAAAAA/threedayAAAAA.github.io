@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/assets/style.49eed234.css">
     <link rel="modulepreload" href="/assets/Home.76ca4695.js">
     <link rel="modulepreload" href="/assets/app.a1ad4963.js">
-    <link rel="modulepreload" href="/assets/others_vue_press.md.2fa0049d.lean.js">
+    <link rel="modulepreload" href="/assets/others_vue_press.md.a0c944e2.lean.js">
     
     <meta name="twitter:title" content="部署到 github page | 三天的博客">
   <meta property="og:title" content="部署到 github page | 三天的博客">
@@ -22,7 +22,6 @@
 <span class="token comment"># 生成静态文件</span>
 <span class="token assign-left variable">file</span><span class="token operator">=</span><span class="token string">&quot;docs/.vitepress/dist&quot;</span>
 
-<span class="token comment"># 将无用文件先删除</span>
 <span class="token keyword">if</span> <span class="token punctuation">[</span> -f <span class="token variable">$file</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
     <span class="token function">rm</span> -rf <span class="token variable">$file</span>
 <span class="token keyword">fi</span>
@@ -38,13 +37,14 @@
 
 <span class="token comment"># 本地部署</span>
 <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>
-<span class="token function">cp</span> -r dist/. d:/nginx/html
+<span class="token function">chmod</span> <span class="token number">777</span> d:/nginx/html
+<span class="token function">cp</span> -r dist/ d:/nginx/html
 <span class="token builtin class-name">cd</span> d:/nginx
 start nginx
 
 <span class="token builtin class-name">exit</span> <span class="token number">0</span>
 </code></pre></div></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-fb8d84c6><div class="edit" data-v-fb8d84c6><div class="edit-link" data-v-fb8d84c6 data-v-1ed99556><!----></div></div><div class="updated" data-v-fb8d84c6><!----></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"accumulate_readme.md\":\"94fdd468\",\"accumulate_data_struct.md\":\"6d465137\",\"accumulate_high.md\":\"7eb5329e\",\"accumulate_time_or_space_analyse.md\":\"98ce2504\",\"font_end_engineering_application.md\":\"36885046\",\"font_end_engineering_commoncodesnippets.md\":\"0cf007da\",\"font_end_engineering_vue2produceconfig.md\":\"84b0595c\",\"font_end_knowledge_system_readme.md\":\"9d2cf904\",\"font_end_knowledge_system_css.md\":\"2586684e\",\"font_end_knowledge_system_html.md\":\"15ef21ab\",\"font_end_knowledge_system_js.md\":\"acec5844\",\"index.md\":\"c2138288\",\"others_git_hooks.md\":\"8d663040\",\"others_vue_press.md\":\"2fa0049d\"}")</script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"accumulate_readme.md\":\"94fdd468\",\"accumulate_data_struct.md\":\"6d465137\",\"accumulate_high.md\":\"7eb5329e\",\"accumulate_time_or_space_analyse.md\":\"98ce2504\",\"font_end_engineering_application.md\":\"36885046\",\"font_end_engineering_commoncodesnippets.md\":\"0cf007da\",\"font_end_engineering_vue2produceconfig.md\":\"84b0595c\",\"font_end_knowledge_system_readme.md\":\"9d2cf904\",\"font_end_knowledge_system_css.md\":\"2586684e\",\"font_end_knowledge_system_html.md\":\"15ef21ab\",\"font_end_knowledge_system_js.md\":\"acec5844\",\"index.md\":\"c2138288\",\"others_git_hooks.md\":\"8d663040\",\"others_vue_press.md\":\"a0c944e2\"}")</script>
     <script type="module" async src="/assets/app.a1ad4963.js"></script>
     
   </body>
